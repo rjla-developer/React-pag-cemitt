@@ -1,0 +1,26 @@
+.container {
+  width: 1320px;
+  margin: auto;
+}
+.section{
+  width: 1152px;
+  height: 850px;
+  margin: auto;
+  margin-bottom: 103px;
+}
+
+.tituloSecc{
+  font-size: 50px;
+  color: #BF6DC4;
+  margin-bottom: -20px;
+}
+.descriSecc{
+  font-size: 30px;
+  color: #FFFFFF;
+}
+
+.pizarron{
+  height: 714px;
+  background: rgba(255, 255, 255, 0.61);
+  border-radius: 20px;
+}

@@ -1,0 +1,17 @@
+[
+    {
+        "titulo": "Segmento de mercado",
+        "descripcion": "El segmento de mercado es la persona o el conjunto de personas a las que les estás solucionando una problemática o necesidad. En este vídeo aprenderás a identificar quién o quiénes son tus clientes, a segmentarlos y a diferenciar las diferentes propuestas de valor que ofreces a cada uno.",
+        "img": "./img/modulos/segMercado.jpg"
+    },
+    {
+        "titulo": "Segmento de propuesta de valor",
+        "descripcion": "Es la estrategia que usas para ofrecer tu producto o servicio a un nicho de clientes específico. La oferta de valor debe atacar un problema o necesidad de un cliente, o crear ganancias para los consumidores.",
+        "img": "./img/modulos/propValor.jpg"
+    },
+    {
+        "titulo": "Segmento de canales",
+        "descripcion": "Se usan para promocionar y entregar tu producto a un nicho de clientes específico. El canal es cualquier elemento de contacto entre tu empresa y el cliente. Se incluye también cualquier interfaz que utilice el cliente para acceder a tu producto o servicio.",
+        "img": "./img/modulos/segCanales.jpg"
+    }
+]
