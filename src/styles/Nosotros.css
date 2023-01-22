@@ -1,0 +1,52 @@
+.containerNosotros {
+    width: 1320px;
+    margin: auto;
+}
+
+.menuNosotros {
+    width: 1303px;
+    margin: auto;
+    margin-bottom: 60px;
+}
+
+.somos {
+    margin: auto;
+    width: 1152px;
+    height: 862px;
+    background: #4F2073;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.proyecto {
+    margin: auto;
+    margin-top: 100px;
+    width: 1152px;
+    height: 1000px;
+    background: #8B286F;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenido {
+    width: 985px;
+}
+
+.descriNos{
+    padding-top: 70px;
+}
+
+.contImg{
+    /* padding-top: 10px; */
+    width: "100%";
+    display: flex;
+    justify-content: center;
+}
+
+.imgDescNos{
+    width: 700px;
+}

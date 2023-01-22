@@ -1,0 +1,58 @@
+.pieDePagina{
+    margin: auto;
+    margin-top: 50px;
+    width: 1152px;
+}
+
+.contactosCemitt{
+    display: grid;
+    column-gap: 50px;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    height: 270px;
+}
+
+.elemContact{
+    height: 270px;
+}
+
+.tittleContact{
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+.infoContact{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    height: 76px;
+}
+
+.logoElemContact{
+    width: 468px;
+}
+
+.icono{
+    color: black;
+    width: 40px;
+    height: 40px;
+}
+
+.descContact{
+    font-weight: 700;
+    font-size: 15px;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+.links{
+    text-decoration: none;
+}
+
+.creditos{
+    width: '100%';
+    display: flex;
+    justify-content: center;
+    color: white;
+}
