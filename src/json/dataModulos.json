@@ -2,16 +2,19 @@
     {
         "titulo": "Segmento de mercado",
         "descripcion": "El segmento de mercado es la persona o el conjunto de personas a las que les estás solucionando una problemática o necesidad. En este vídeo aprenderás a identificar quién o quiénes son tus clientes, a segmentarlos y a diferenciar las diferentes propuestas de valor que ofreces a cada uno.",
-        "img": "./img/modulos/segMercado.jpg"
+        "img": "https://hrdjumasol.com/wp-content/uploads/2013/12/1000x500.gif",
+        "link":"https://youtu.be/2LQgRjvOSdk"
     },
     {
         "titulo": "Segmento de propuesta de valor",
         "descripcion": "Es la estrategia que usas para ofrecer tu producto o servicio a un nicho de clientes específico. La oferta de valor debe atacar un problema o necesidad de un cliente, o crear ganancias para los consumidores.",
-        "img": "./img/modulos/propValor.jpg"
+        "img": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cb2f2ecd-0d78-452f-b1b3-a29cfe21cd03/d5qrlhm-726c859d-9093-4463-b7c4-1f27d60b8536.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2NiMmYyZWNkLTBkNzgtNDUyZi1iMWIzLWEyOWNmZTIxY2QwM1wvZDVxcmxobS03MjZjODU5ZC05MDkzLTQ0NjMtYjdjNC0xZjI3ZDYwYjg1MzYuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.qOhb9WsjYDZf5lvH7rg1R1XFA-uNF-EBZVTgx_DMRyM",
+        "link":"https://youtu.be/hafMawCVbx4"
     },
     {
         "titulo": "Segmento de canales",
         "descripcion": "Se usan para promocionar y entregar tu producto a un nicho de clientes específico. El canal es cualquier elemento de contacto entre tu empresa y el cliente. Se incluye también cualquier interfaz que utilice el cliente para acceder a tu producto o servicio.",
-        "img": "./img/modulos/segCanales.jpg"
+        "img": "https://decidesoluciones.es/wp-content/uploads/2020/12/Automation-1000x500.jpg",
+        "link":"https://youtu.be/-u3gEcCIE44"
     }
 ]

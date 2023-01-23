@@ -7,9 +7,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cards";
+import "swiper/css/pagination";
 
 // import required modules
-import { EffectCards } from "swiper";
+import { EffectCards, Pagination } from "swiper";
 
 const items = [
   {
@@ -29,40 +30,39 @@ const items = [
   },
 ];
 
-const convocatorias=[
+const convocatorias = [
   {
-    titulo:"¡Empieza el maratón!",
-    desc:"Prepárate para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
+    titulo: "¡Empieza el maratón!",
+    desc: "Prepárate para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
     linkRegistro: "https://forms.gle/vJPC87RYujo1DKcf8",
-    img: "https://i0.wp.com/coinsamatik.com/wp-content/uploads/2018/07/rittal-logo-coinsamatik-website-e1628789471367.jpg"
+    img: "https://hrdjumasol.com/wp-content/uploads/2013/12/500x500.gif",
   },
   {
-    titulo:"¡Empieza el maratón! 2",
-    desc:"Prepárate jhbsaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaa dclaknclan sklcn al <slnbjaslnklanlanlxnasl asasnlandlnals dlakn dlansdkgalsndlanlansldnaln sdaskdbjasldjnñasjdpandas para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
+    titulo: "¡Empieza el maratón! 2",
+    desc: "Prepárate jhbsaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaa dclaknclan sklcn al <slnbjaslnklanlanlxnasl asasnlandlnals dlakn dlansdkgalsndlanlansldnaln sdaskdbjasldjnñasjdpandas para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
     linkRegistro: "https://forms.gle/vJPC87RYujo1DKcf8",
-    img: "https://camo.githubusercontent.com/735990c4f7ec7f7a920ac87f04adbadca4865fffe088ee8357d3ca7751b12bfb/68747470733a2f2f692e706f7374696d672e63632f676377797372684b2f6869646570686973682e706e67"
+    img: "https://camo.githubusercontent.com/735990c4f7ec7f7a920ac87f04adbadca4865fffe088ee8357d3ca7751b12bfb/68747470733a2f2f692e706f7374696d672e63632f676377797372684b2f6869646570686973682e706e67",
   },
   {
-    titulo:"¡Empieza el maratón! 3",
-    desc:"Prepárate para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
+    titulo: "¡Empieza el maratón! 3",
+    desc: "Prepárate para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
     linkRegistro: "https://forms.gle/vJPC87RYujo1DKcf8",
-    img: "https://cdn.fandangoseo.com/wp-content/uploads/2021/03/domain.jpg.webp"
+    img: "https://cdn.fandangoseo.com/wp-content/uploads/2021/03/domain.jpg.webp",
   },
-]
-
+];
 
 function SeccPublicaciones() {
-  const [contentDescPizarron, setContentDescPizarron] = useState({})
+  const [contentDescPizarron, setContentDescPizarron] = useState({});
   /* const [backColorDesc, setBackColorDesc] = useState(""); */
 
   useEffect(() => {
     setContentDescPizarron({
-      titulo:"Da clic a un cartel",
-      desc:"Lorem Prepárate para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
+      titulo: "Da clic a un cartel",
+      desc: "Lorem Prepárate para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
       linkRegistro: "https://forms.gle/vJPC87RYujo1DKcf8",
-      img:"https://reactjs.org/logo-og.png",
-      backColorDesc: "#7198f79c"
-    })
+      img: "https://hrdjumasol.com/wp-content/uploads/2013/12/500x500.gif",
+      backColorDesc: "#7198f79c",
+    });
     /* setBackColorDesc("#7198f79c"); */
 
     return () => {};
@@ -74,8 +74,8 @@ function SeccPublicaciones() {
       desc: variable.desc,
       linkRegistro: variable.linkRegistro,
       img: variable.img,
-      backColorDesc: color
-    })
+      backColorDesc: color,
+    });
   }
 
   return (
@@ -83,7 +83,11 @@ function SeccPublicaciones() {
       <div className="grid">
         {items.map((item, index) => {
           return (
-            <div className="item" key={"item: " + index} style={{ width: item.width }}>
+            <div
+              className="item"
+              key={"item: " + index}
+              style={{ width: item.width }}
+            >
               <div
                 className="pelotita"
                 style={{ background: item.background }}
@@ -99,16 +103,26 @@ function SeccPublicaciones() {
         <Swiper
           effect={"cards"}
           grabCursor={true}
-          modules={[EffectCards]}
+          pagination={true}
+          modules={[EffectCards, Pagination]}
           className="mySwiper"
         >
-          {convocatorias.map((convocatoria, index)=>{
-            return(
-              <SwiperSlide key={"Convocatoria: "+index} 
-                onClick={()=>functionSetContent(convocatoria, "#ecc2329c")}>
-                <img className="imgOpc" src={convocatoria.img} alt={convocatoria.titulo}/>
+          {convocatorias.map((convocatoria, index) => {
+            return (
+              <SwiperSlide
+                id="Swiper"
+                key={"Convocatoria: " + index}
+                onClick={() => functionSetContent(convocatoria, "#ecc2329c")}
+              >
+                {/* <a href="#Swiper"> */}
+                  <img
+                    className="imgOpc"
+                    src={convocatoria.img}
+                    alt={convocatoria.titulo}
+                  />
+                {/* </a> */}
               </SwiperSlide>
-            )
+            );
           })}
         </Swiper>
 
@@ -116,47 +130,69 @@ function SeccPublicaciones() {
         <Swiper
           effect={"cards"}
           grabCursor={true}
-          modules={[EffectCards]}
+          pagination={true}
+          modules={[EffectCards, Pagination]}
           className="mySwiper"
         >
-          {convocatorias.map((convocatoria, index)=>{
-            return(
-              <SwiperSlide key={"Convocatoria: "+index} 
-                onClick={()=>functionSetContent(convocatoria, "#7198f79c")}>
-                <img className="imgOpc" src={convocatoria.img} alt={convocatoria.titulo}/>
+          {convocatorias.map((convocatoria, index) => {
+            return (
+              <SwiperSlide
+                key={"Convocatoria: " + index}
+                onClick={() => functionSetContent(convocatoria, "#7198f79c")}
+              >
+                <img
+                  className="imgOpc"
+                  src={convocatoria.img}
+                  alt={convocatoria.titulo}
+                />
               </SwiperSlide>
-            )
+            );
           })}
         </Swiper>
-
 
         {/* Slide Asesorías */}
         <Swiper
           effect={"cards"}
           grabCursor={true}
-          modules={[EffectCards]}
+          pagination={true}
+          modules={[EffectCards, Pagination]}
           className="mySwiper"
         >
-          {convocatorias.map((convocatoria, index)=>{
-            return(
-              <SwiperSlide key={"Convocatoria: "+index} 
-                onClick={()=>functionSetContent(convocatoria, "#dc85bf9c")}>
-                <img className="imgOpc" src={convocatoria.img} alt={convocatoria.titulo}/>
+          {convocatorias.map((convocatoria, index) => {
+            return (
+              <SwiperSlide
+                key={"Convocatoria: " + index}
+                onClick={() => functionSetContent(convocatoria, "#dc85bf9c")}
+              >
+                <img
+                  className="imgOpc"
+                  src={convocatoria.img}
+                  alt={convocatoria.titulo}
+                />
               </SwiperSlide>
-            )
+            );
           })}
         </Swiper>
-
       </div>
       <div
+        id="DescPizarron"
         className="descPizarron"
         style={{ backgroundColor: contentDescPizarron.backColorDesc }}
       >
-        <img className="imgDescPizarron" src={contentDescPizarron.img} alt={contentDescPizarron.titulo}/>
+        <img
+          className="imgDescPizarron"
+          src={contentDescPizarron.img}
+          alt={contentDescPizarron.titulo}
+        />
         <div className="containerDesc">
           <h1 className="titulo">{contentDescPizarron.titulo}</h1>
           <h3 className="desc">{contentDescPizarron.desc}</h3>
-          <h3 className="link">Link registro: <a href={contentDescPizarron.linkRegistro}>{contentDescPizarron.linkRegistro}</a></h3>
+          <h3 className="link">
+            Link registro:{" "}
+            <a href={contentDescPizarron.linkRegistro}>
+              {contentDescPizarron.linkRegistro}
+            </a>
+          </h3>
         </div>
       </div>
     </div>

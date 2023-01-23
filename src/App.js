@@ -1,23 +1,28 @@
-import './App.css';
-import SeccPublicaciones from './components/publicaciones/SeccPublicaciones';
-import SeccModulos from './components/modulos/SeccModulos';
+import SeccPublicaciones from "./components/publicaciones/SeccPublicaciones";
+import SeccModulos from "./components/modulos/SeccModulos";
+import PieDePag from "./components/pieDePagina/PieDePag";
 
 //Data:
 /* import dataModulos from './json/dataModulos.json' */
 
 function App() {
   return (
-    <div className="container">
-      <div className='section' id='Publicaciones'>
-        <SeccPublicaciones />
       </div>
-      <div className='section' id='Servicios'>
-
-      </div>
-      <div className='section' id='Modulos'>
-        <p className="tituloSecc">Módulos</p>
-        <p className="descriSecc">Aquí encontrarás los diferentes temas de aprendizajes</p>
+      <div className="container">
+        <div
+          className="section"
+          id="Publicaciones"
+          style={{ height: "1150px" }}
+        >
+          <SeccPublicaciones />
+        </div>
+        <div className="section" id="Servicios">
+        <SeccModulos />
+        </div>
+        <div className="section" id="Modulos">
           <SeccModulos />
+        </div>
+        <PieDePag />
       </div>
     </div>
   );
