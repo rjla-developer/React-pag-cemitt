@@ -1,0 +1,104 @@
+.mySwiper2 {
+    border-radius: 20px;
+    width: 1000px;
+    height: 500px
+}
+
+.mySwiper2:hover {
+    border-radius: 20px;
+    width: 1000px;
+    height: 500px
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    --swiper-navigation-color: #92286E
+}
+
+.containerPortada{
+    width: 1000px;
+    height: 500px;
+}
+
+.imgPortadaVideo{
+    object-fit: fill;
+    cursor: pointer;
+}
+
+/* .imgPortadaVideo:active{
+    object-fit: fill;
+    position: absolute;
+} */
+
+.containerModal{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.508);
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal{
+    width: 1303px;
+    height: 41vw;
+    background-color: #461f73dd;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.iconoCerrar{
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.videoModulo{
+    width: 800px;
+    height: 500px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tituloModal{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 40px;
+    color: #ffffff;
+    
+}
+
+.containerVideoDesc{
+    display: grid;
+    column-gap: 5px;
+    grid-template-columns: auto auto;
+    padding-left: 20px;
+}
+
+.descrVideo{
+    margin: 40px;
+    font-size: 20px;
+}
+
+.descModal{
+    width: 430px;
+    height: 500px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

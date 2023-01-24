@@ -1,12 +1,22 @@
+html{
+  scroll-behavior: smooth;
+}
+
 .container {
   width: 1320px;
   margin: auto;
 }
+
+.menu{
+  width: 1303px;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
 .section{
   width: 1152px;
-  height: 850px;
   margin: auto;
-  margin-bottom: 103px;
+  margin-bottom: 150px;
 }
 
 .tituloSecc{

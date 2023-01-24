@@ -79,7 +79,7 @@ function SeccPublicaciones() {
   }
 
   return (
-    <div>
+    <>
       <div className="grid">
         {items.map((item, index) => {
           return (
@@ -103,7 +103,9 @@ function SeccPublicaciones() {
         <Swiper
           effect={"cards"}
           grabCursor={true}
-          pagination={true}
+          pagination={{
+            clickable: true,
+          }}
           modules={[EffectCards, Pagination]}
           className="mySwiper"
         >
@@ -112,15 +114,16 @@ function SeccPublicaciones() {
               <SwiperSlide
                 id="Swiper"
                 key={"Convocatoria: " + index}
-                onClick={() => functionSetContent(convocatoria, "#ecc2329c")}
+                onClick={() => {
+                  window.scroll(0, 550);
+                  functionSetContent(convocatoria, "#ecc2329c");
+                }}
               >
-                {/* <a href="#Swiper"> */}
-                  <img
-                    className="imgOpc"
-                    src={convocatoria.img}
-                    alt={convocatoria.titulo}
-                  />
-                {/* </a> */}
+                <img
+                  className="imgOpc"
+                  src={convocatoria.img}
+                  alt={convocatoria.titulo}
+                />
               </SwiperSlide>
             );
           })}
@@ -130,7 +133,9 @@ function SeccPublicaciones() {
         <Swiper
           effect={"cards"}
           grabCursor={true}
-          pagination={true}
+          pagination={{
+            clickable: true,
+          }}
           modules={[EffectCards, Pagination]}
           className="mySwiper"
         >
@@ -138,7 +143,10 @@ function SeccPublicaciones() {
             return (
               <SwiperSlide
                 key={"Convocatoria: " + index}
-                onClick={() => functionSetContent(convocatoria, "#7198f79c")}
+                onClick={() => {
+                  window.scroll(0, 550);
+                  functionSetContent(convocatoria, "#7198f79c");
+                }}
               >
                 <img
                   className="imgOpc"
@@ -154,7 +162,9 @@ function SeccPublicaciones() {
         <Swiper
           effect={"cards"}
           grabCursor={true}
-          pagination={true}
+          pagination={{
+            clickable: true,
+          }}
           modules={[EffectCards, Pagination]}
           className="mySwiper"
         >
@@ -162,7 +172,10 @@ function SeccPublicaciones() {
             return (
               <SwiperSlide
                 key={"Convocatoria: " + index}
-                onClick={() => functionSetContent(convocatoria, "#dc85bf9c")}
+                onClick={() => {
+                  window.scroll(0, 550);
+                  functionSetContent(convocatoria, "#dc85bf9c");
+                }}
               >
                 <img
                   className="imgOpc"
@@ -195,7 +208,7 @@ function SeccPublicaciones() {
           </h3>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

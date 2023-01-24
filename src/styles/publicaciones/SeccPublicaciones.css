@@ -96,3 +96,7 @@
 .swiper-pagination-bullet-active{
     --swiper-pagination-color: #92286E;
 }
+
+.swiper-pagination{
+    color: #92286E;
+}
