@@ -48,7 +48,7 @@ function SeccModulos() {
         {data.map((item) => {
           return (
             <SwiperSlide
-              key={item.caption}
+              key={item.titulo}
               onClick={() => {
                 setVidePlayer(!videPlayer);
                 setInfoVide(

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/publicaciones/SeccPublicaciones.css";
+import { saveConvocatoria, getConvocatorias } from "../../firebase/api";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,67 +15,89 @@ import { EffectCards, Pagination } from "swiper";
 
 const items = [
   {
-    nombre: "Convocatorias",
+    nombre: "convocatorias",
     background: "#ecc2329c",
     width: "365px",
   },
   {
-    nombre: "Talleres",
+    nombre: "talleres",
     background: "#7198f79c",
     width: "215px",
   },
   {
-    nombre: "Asesorías",
+    nombre: "podcast",
     background: "#dc85bf9c",
-    width: "265px",
+    width: "225px",
   },
 ];
 
-const convocatorias = [
-  {
+const inicialConvo={
     titulo: "¡Empieza el maratón!",
     desc: "Prepárate para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
-    linkRegistro: "https://forms.gle/vJPC87RYujo1DKcf8",
+    link: "https://forms.gle/vJPC87RYujo1DKcf8",
     img: "https://hrdjumasol.com/wp-content/uploads/2013/12/500x500.gif",
-  },
-  {
-    titulo: "¡Empieza el maratón! 2",
-    desc: "Prepárate jhbsaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaa dclaknclan sklcn al <slnbjaslnklanlanlxnasl asasnlandlnals dlakn dlansdkgalsndlanlansldnaln sdaskdbjasldjnñasjdpandas para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
-    linkRegistro: "https://forms.gle/vJPC87RYujo1DKcf8",
-    img: "https://camo.githubusercontent.com/735990c4f7ec7f7a920ac87f04adbadca4865fffe088ee8357d3ca7751b12bfb/68747470733a2f2f692e706f7374696d672e63632f676377797372684b2f6869646570686973682e706e67",
-  },
-  {
-    titulo: "¡Empieza el maratón! 3",
-    desc: "Prepárate para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
-    linkRegistro: "https://forms.gle/vJPC87RYujo1DKcf8",
-    img: "https://cdn.fandangoseo.com/wp-content/uploads/2021/03/domain.jpg.webp",
-  },
-];
+  }
 
 function SeccPublicaciones() {
   const [contentDescPizarron, setContentDescPizarron] = useState({});
-  /* const [backColorDesc, setBackColorDesc] = useState(""); */
+  const [convocatorias, setConvocatorias] = useState([]);
+  const [talleres, setTalleres] = useState([]);
+  const [podcast, setPodcast] = useState([]);
 
+  const handleSubmit = async (e) => {
+    await saveConvocatoria(inicialConvo);
+    console.log("Se guardo convocatoria");
+  };
+
+  //Pasar al context:
+  const getLinks = async () => {
+      items.map(async (item)=>{
+        const querySnapshot = await getConvocatorias(item.nombre);
+        const docs = [];
+        querySnapshot.forEach((doc) => {
+          docs.push({ ...doc.data(), id: doc.id });
+        });
+        if (item.nombre=="convocatorias") {
+          setConvocatorias(docs);
+        }
+        if (item.nombre=="talleres") {
+          setTalleres(docs);
+        }
+        if (item.nombre=="podcast") {
+          setPodcast(docs);
+        }
+      })
+      
+  };
+
+  //Pasar a l context:
   useEffect(() => {
     setContentDescPizarron({
       titulo: "Da clic a un cartel",
       desc: "Lorem Prepárate para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
-      linkRegistro: "https://forms.gle/vJPC87RYujo1DKcf8",
+      link: "https://forms.gle/vJPC87RYujo1DKcf8",
       img: "https://hrdjumasol.com/wp-content/uploads/2013/12/500x500.gif",
       backColorDesc: "#7198f79c",
+      categoria:"convocatoria"
     });
-    /* setBackColorDesc("#7198f79c"); */
+    getLinks();
+    /* handleSubmit(); */
 
     return () => {};
   }, []);
 
+
+
+
+  //Esta función sirve para pintar todo lo que irá adentro del pizarron
   function functionSetContent(variable, color) {
     setContentDescPizarron({
       titulo: variable.titulo,
       desc: variable.desc,
-      linkRegistro: variable.linkRegistro,
+      link: variable.link,
       img: variable.img,
       backColorDesc: color,
+      categoria: variable.categoria
     });
   }
 
@@ -139,19 +162,19 @@ function SeccPublicaciones() {
           modules={[EffectCards, Pagination]}
           className="mySwiper"
         >
-          {convocatorias.map((convocatoria, index) => {
+          {talleres.map((taller, index) => {
             return (
               <SwiperSlide
-                key={"Convocatoria: " + index}
+                key={"Taller: " + index}
                 onClick={() => {
                   window.scroll(0, 550);
-                  functionSetContent(convocatoria, "#7198f79c");
+                  functionSetContent(taller, "#7198f79c");
                 }}
               >
                 <img
                   className="imgOpc"
-                  src={convocatoria.img}
-                  alt={convocatoria.titulo}
+                  src={taller.img}
+                  alt={taller.titulo}
                 />
               </SwiperSlide>
             );
@@ -168,19 +191,19 @@ function SeccPublicaciones() {
           modules={[EffectCards, Pagination]}
           className="mySwiper"
         >
-          {convocatorias.map((convocatoria, index) => {
+          {podcast.map((podcast, index) => {
             return (
               <SwiperSlide
-                key={"Convocatoria: " + index}
+                key={"Podcast: " + index}
                 onClick={() => {
                   window.scroll(0, 550);
-                  functionSetContent(convocatoria, "#dc85bf9c");
+                  functionSetContent(podcast, "#dc85bf9c");
                 }}
               >
                 <img
                   className="imgOpc"
-                  src={convocatoria.img}
-                  alt={convocatoria.titulo}
+                  src={podcast.img}
+                  alt={podcast.titulo}
                 />
               </SwiperSlide>
             );
@@ -201,9 +224,9 @@ function SeccPublicaciones() {
           <h1 className="titulo">{contentDescPizarron.titulo}</h1>
           <h3 className="desc">{contentDescPizarron.desc}</h3>
           <h3 className="link">
-            Link registro:{" "}
-            <a href={contentDescPizarron.linkRegistro}>
-              {contentDescPizarron.linkRegistro}
+            {contentDescPizarron.categoria === "Podcast"?  "Escúchalo aquí: ": "Link registro: "}
+            <a href={contentDescPizarron.link}>
+              {contentDescPizarron.link}
             </a>
           </h3>
         </div>

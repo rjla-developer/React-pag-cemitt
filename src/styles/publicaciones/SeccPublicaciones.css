@@ -17,6 +17,7 @@
 .opcTitulo {
     font-size: 50px;
     color: #BF6DC4;
+    text-transform: capitalize;
 }
 
 .imgOpc{

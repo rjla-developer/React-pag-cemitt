@@ -14,7 +14,7 @@ function PieDePag() {
             alt="logo"
           />
         </div>
-        <div class="elemContact">
+        <div className="elemContact">
           <p className="tittleContact">CONTACTOS</p>
           <div className="infoContact">
             <a href="tel:7773105520" className="links">
@@ -37,7 +37,7 @@ function PieDePag() {
             </a>
           </div>
         </div>
-        <div class="elemContact">
+        <div className="elemContact">
           <h3 className="tittleContact">REDES SOCIALES</h3>
           <div className="infoContact">
             <a
