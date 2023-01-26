@@ -31,12 +31,12 @@ const items = [
   },
 ];
 
-const inicialConvo={
+/* const inicialConvo={
     titulo: "¡Empieza el maratón!",
     desc: "Prepárate para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
     link: "https://forms.gle/vJPC87RYujo1DKcf8",
     img: "https://hrdjumasol.com/wp-content/uploads/2013/12/500x500.gif",
-  }
+  } */
 
 function SeccPublicaciones() {
   const [contentDescPizarron, setContentDescPizarron] = useState({});
@@ -53,13 +53,13 @@ function SeccPublicaciones() {
         querySnapshot.forEach((doc) => {
           docs.push({ ...doc.data(), id: doc.id });
         });
-        if (item.nombre=="convocatorias") {
+        if (item.nombre==="convocatorias") {
           setConvocatorias(docs);
         }
-        if (item.nombre=="talleres") {
+        if (item.nombre==="talleres") {
           setTalleres(docs);
         }
-        if (item.nombre=="podcast") {
+        if (item.nombre==="podcast") {
           setPodcast(docs);
         }
       })
