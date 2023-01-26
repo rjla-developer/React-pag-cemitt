@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/publicaciones/SeccPublicaciones.css";
-import { saveConvocatoria, getConvocatorias } from "../../firebase/api";
+import { getDocumentosBD } from "../../firebase/api";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -44,15 +44,11 @@ function SeccPublicaciones() {
   const [talleres, setTalleres] = useState([]);
   const [podcast, setPodcast] = useState([]);
 
-  const handleSubmit = async (e) => {
-    await saveConvocatoria(inicialConvo);
-    console.log("Se guardo convocatoria");
-  };
 
   //Pasar al context:
   const getLinks = async () => {
       items.map(async (item)=>{
-        const querySnapshot = await getConvocatorias(item.nombre);
+        const querySnapshot = await getDocumentosBD(item.nombre);
         const docs = [];
         querySnapshot.forEach((doc) => {
           docs.push({ ...doc.data(), id: doc.id });
@@ -70,7 +66,7 @@ function SeccPublicaciones() {
       
   };
 
-  //Pasar a l context:
+  //Pasar al context:
   useEffect(() => {
     setContentDescPizarron({
       titulo: "Da clic a un cartel",
