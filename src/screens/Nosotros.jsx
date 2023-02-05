@@ -1,6 +1,6 @@
 import React from "react";
 /* import NavbarNosotros from "../components/menu/NavbarNosotros"; */
-/* import PieDePag from "../components/pieDePagina/PieDePag"; */
+import PieDePag from "../components/pieDePagina/PieDePag";
 import "../styles/Nosotros.css";
 
 function Nosotros() {
@@ -174,7 +174,7 @@ function Nosotros() {
           </div>
         </div>
       </div>
-      <footer></footer>
+      <PieDePag />
     </>
     
   );
