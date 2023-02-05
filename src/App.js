@@ -10,10 +10,8 @@ import PieDePag from "./components/pieDePagina/PieDePag";
 
 function App() {
   return (
-    <div>
-      <div className="menu" id="menu">
-        <Navbar />
-      </div>
+    <>
+      <Navbar />
       <div className="container">
         <div
           className="section"
@@ -28,9 +26,10 @@ function App() {
         <div className="section" id="Modulos">
           <SeccModulos />
         </div>
-        <PieDePag />
+        
       </div>
-    </div>
+      <PieDePag />
+    </>
   );
 }
 

@@ -1,30 +1,5 @@
-.containerMenu {
-    margin: 0 auto;
-    padding: 0 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 95px;
-}
-
-.navbar {
-    height: 60px;
-    position: relative;
-}
-
-.logo {
-    
-}
-
-.logoImg{
-    height: 95px;
-}
-
 .menu-icon {
     display: none;
-}
-
-.nav-elements {
 }
 
 .nav-elements ul {
@@ -44,26 +19,13 @@
     text-decoration: none;
 }
 
-.nav-elements ul a.active {
-    font-weight: 700;
-}
-
-.nav-elements ul a.active::after {
-    
-}
-
-.ElemSelec{
-    background-color: chartreuse;
-    color: aquamarine;
-}
-
 @media (max-width: 768px) {
     .nav-elements ul li:not(:last-child) {
         margin-right: 30px;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .menu-icon {
         display: block;
         cursor: pointer;
@@ -71,13 +33,13 @@
 
     .nav-elements {
         position: absolute;
-        right: 0;
-        top: 60px;
-        background-color: #fef7e5;
+        left: 0;
+        top: 70px;
+        background: linear-gradient(90deg, #92286E 0%, #461F73 100%);
         width: 0px;
-        height: calc(100vh - 60px);
         transition: all 0.3s ease-in;
         overflow: hidden;
+        border-radius: 20px;
     }
 
     .nav-elements.active {
@@ -93,4 +55,16 @@
         margin-right: unset;
         margin-top: 22px;
     }
+
+    .nav-elements ul a {
+        font-weight: 700;
+        font-size: 20px;
+        color: #ffffff;
+        text-decoration: none;
+    }
 }
+
+
+
+
+/* Boostrap: */

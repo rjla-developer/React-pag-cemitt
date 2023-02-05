@@ -1,12 +1,12 @@
 import React from "react";
-/* import NavbarNosotros from "../components/menu/NavbarNosotros"; */
+import Navbar from "../components/menu/Navbar";
 import PieDePag from "../components/pieDePagina/PieDePag";
 import "../styles/Nosotros.css";
 
 function Nosotros() {
   return (
     <>
-      <header></header>
+      <Navbar />
       <div className="container">
         <div className="row justify-content-center m-1">
           <div className="somos2 col-12 col-sm-10 p-3 p-sm-5" id="Somos">
@@ -66,7 +66,7 @@ function Nosotros() {
           </div>
         </div>
         <div className="row justify-content-center m-0 mt-5">
-          <div className="equipo col-12 col-sm-10 p-1 p-sm-5" id="Equipo">
+          <div className="equipo col-12 col-sm-10 p-1 p-sm-5" id="Conocenos">
             <p className="tituloSecc2 fw-bold fs-1 mb-3 mb-md-4 p-sm-0">Conocenos:</p>
 
             <div class="row row-cols-1 row-cols-lg-2 g-2 g-lg-3">
