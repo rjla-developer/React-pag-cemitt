@@ -2,3 +2,23 @@ body {
   font-family: 'Merriweather Sans', sans-serif;
   background: linear-gradient(90deg, #92286E 0%, #461F73 100%);
 }
+
+.modalbackground{
+  background: linear-gradient(90deg, #92286E 0%, #461F73 100%);
+}
+
+.colorRosa{
+  color: #92286E;
+}
+
+.background-Rosa{
+  background-color: #92286E;
+}
+
+.colorMorado{
+  color: #461F73;
+}
+
+.background-Morado{
+  background-color: #461F73;
+}

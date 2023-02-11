@@ -2,28 +2,11 @@ html{
   scroll-behavior: smooth;
 }
 
-.container {
-  margin: auto;
-}
-
-.menu{
-  width: 1303px;
-  margin: auto;
-  margin-bottom: 60px;
-}
-
-.section{
-  width: 1152px;
-  margin: auto;
-  margin-bottom: 150px;
-}
-
 .tituloSecc{
-  font-size: 50px;
   color: #BF6DC4;
-  margin-bottom: -20px;
 }
-.descriSecc{
-  font-size: 25px;
-  color: #FFFFFF;
+
+.rounded-2rem{
+  border-radius: 2rem;
 }
+
