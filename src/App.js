@@ -1,7 +1,7 @@
 import "./App.css";
 import Navbar from "./components/menu/Navbar";
 /* import SeccPublicaciones from "./components/publicaciones/SeccPublicaciones"; */
-/* import SeccServicios from "./components/servicios/SeccServicios"; */
+import SeccServicios from "./components/servicios/SeccServicios";
 import SeccModulos from "./components/modulos/SeccModulos";
 import PieDePag from "./components/pieDePagina/PieDePag";
 
@@ -13,7 +13,6 @@ function App() {
     <>
       <Navbar />
       
-      <div className="container">
         
         <div
           className="section"
@@ -22,11 +21,9 @@ function App() {
         >
           {/* <SeccPublicaciones /> */}
         </div>
-        {/* <div className="section" id="Servicios">
-          <SeccServicios />
-        </div> */}
+        
+        <SeccServicios />
         <SeccModulos />
-      </div>
       <PieDePag />
     </>
   );

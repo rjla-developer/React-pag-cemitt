@@ -1,0 +1,38 @@
+[
+    {
+        "id":"area1",
+        "area":"Emprendimiento",
+        "img":"https://uploadgerencie.com/imagenes/emprendimiento.png",
+        "descripcion": "Es el área de apoyo a las start ups y emprendimientos tradicionales que permite colaborar que los emprendimientos sean sostenibles mediante la aplicación de metologías probadas",
+        "servicio1": "Incubación de empresas",
+        "descServicio1": "Asesoría especializada para que desde la generación de una idea se pueda identificar la viabilidad comercial de la misma.",
+        "servicio2": "Asesoría Legal y fiscal",
+        "descServicio2": "Apoyo para que los emprendedores identifiquen el proceso para constituir su negocio.",
+        "servicio3": "Capacitación especializada",
+        "descServicio3": "Charlas, talleres, webinars y más para que los emprendedores fortalezcan sus habilidades y sus emprendimientos prosperen."
+    },
+    {
+        "id":"area2",
+        "area":"Centro de protección a invenciones y marcas Morelos (CEPIM)",
+        "img":"https://morelos.gob.mx/sites/default/files/fotos-boletines/216815225_1872171189623725_2013924273033898005_n.jpg",
+        "descripcion": "El CePIM es un programa que busca ayudar a que los emprendedores y empresario desplieguen una ventaja competitiva por medio de acciones que otorguen beneficios jurídicos en materia de propiedad intelectual.",
+        "servicio1": "Asesoría especializada",
+        "descServicio1": "Acompañamiento en los procesos de registro de marca y aviso comercial, desde la búsqueda fonética hasta el ingreso de la solicitud",
+        "servicio2": "CePIM Móvil",
+        "descServicio2": "Servicio itinerante de atención a emprendedores y empresarios en todo el Estado.",
+        "servicio3": "Capacitación especializada",
+        "descServicio3": "Charlas, talleres, webinars y más para que los emprendedores fortalezcan sus habilidades en materia de propiedad intelectual."
+    },
+    {
+        "id":"area3",
+        "area":"Transferencia de tecnología",
+        "img":"https://retos-operaciones-logistica.eae.es/wp-content/uploads/2018/11/contratos-de-transferencia-de-tecnologia.jpg",
+        "descripcion": "En colaboración con investigadores, centro de investigación y universidades se busca colaborar para tender un puente con la industria para que las invenciones e innovaciones puedan llegar a la sociedad.",
+        "servicio1": "Diseño de paquetes comerciales",
+        "descServicio1": "Acompañamiento desde la identificación del mecanismo más adecuado para la transferencia tecnológica hasta el diseño de contratos.",
+        "servicio2": "Vigilancia tecnológica y comercial",
+        "descServicio2": "Empleando herramientas digitales se colabora para la identificación del estado del arte y de la técnica.",
+        "servicio3": "Capacitación especializada",
+        "descServicio3": "Charlas, talleres, webinars y más para que los emprendedores fortalezcan sus habilidades y sus emprendimientos prosperen."
+    }
+]

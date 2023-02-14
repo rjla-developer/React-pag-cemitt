@@ -1,5 +1,5 @@
 body {
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: 'Merriweather Sans', sans-serif !important;
   background: linear-gradient(90deg, #92286E 0%, #461F73 100%);
 }
 
