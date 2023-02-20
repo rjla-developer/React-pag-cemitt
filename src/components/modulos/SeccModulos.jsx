@@ -88,7 +88,7 @@ function SeccModulos() {
               );
             })}
           </Swiper>
-          <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-xl  modal-dialog-centered">
               <div className="modalbackground text-white modal-content">
                 <div className="container my-1 my-md-3">

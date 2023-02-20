@@ -69,9 +69,9 @@ function Nosotros() {
           <div className="equipo col-12 col-sm-10 p-1 p-sm-5" id="Conocenos">
             <p className="tituloSecc2 fw-bold fs-1 mb-3 mb-md-4 p-sm-0">Conocenos:</p>
 
-            <div class="row row-cols-1 row-cols-lg-2 g-2 g-lg-3">
-              <div class="col">
-                <div class="itemPersona p-2">
+            <div className="row row-cols-1 row-cols-lg-2 g-2 g-lg-3">
+              <div className="col">
+                <div className="itemPersona p-2">
                   <div className="row justify-content-center">
                     <div className="col-5 col-md-4">
                       <img
@@ -90,8 +90,8 @@ function Nosotros() {
                   </div>
                 </div>
               </div>
-              <div class="col">
-                <div class="itemPersona p-2">
+              <div className="col">
+                <div className="itemPersona p-2">
                   <div className="row justify-content-center">
                     <div className="col-5 col-md-4">
                       <img
@@ -110,8 +110,8 @@ function Nosotros() {
                   </div>
                 </div>
               </div>
-              <div class="col">
-                <div class="itemPersona p-2">
+              <div className="col">
+                <div className="itemPersona p-2">
                   <div className="row justify-content-center">
                     <div className="col-5 col-md-4">
                       <img
@@ -130,8 +130,8 @@ function Nosotros() {
                   </div>
                 </div>
               </div>
-              <div class="col">
-                <div class="itemPersona p-2">
+              <div className="col">
+                <div className="itemPersona p-2">
                   <div className="row justify-content-center">
                     <div className="col-5 col-md-4">
                       <img
@@ -150,8 +150,8 @@ function Nosotros() {
                   </div>
                 </div>
               </div>
-              <div class="col">
-                <div class="itemPersona p-2">
+              <div className="col">
+                <div className="itemPersona p-2">
                   <div className="row justify-content-center">
                     <div className="col-5 col-md-4">
                       <img

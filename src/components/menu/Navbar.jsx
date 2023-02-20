@@ -64,9 +64,9 @@ export default Navbar;
         </button>
       </div>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
-          <a class="nav-link text-white" href="#">Features</a>
+        <div className="navbar-nav">
+          <a className="nav-link active text-white" aria-current="page" href="#">Home</a>
+          <a className="nav-link text-white" href="#">Features</a>
         </div>
       </div>
   </div>
