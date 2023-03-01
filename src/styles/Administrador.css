@@ -1,0 +1,28 @@
+.barra-lateral{
+    min-height: 100vh;
+}
+
+.barra-lateral a{
+    color: white;
+    text-decoration: none;
+}
+
+.logo-admin:hover {
+    background-color: #000000 !important;
+}
+
+.barra-lateral  a:hover {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    background-color: #92286E
+}
+
+.swiper-admin {
+    width: 500px !important;
+    height: 500px !important;
+}
+
+.btnEditDelete{
+    position: absolute;
+    margin-left: 20rem;
+}

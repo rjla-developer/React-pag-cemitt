@@ -3,12 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { ContextGeneralProvider } from "./context/ContextGeneral";
 
 //Componente navegación:
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //Paginas:
 import Nosotros from "./screens/Nosotros";
+import Login from "./screens/Login";
+import Administrador from "./screens/Administrador";
 
 import './firebase/config'
 
@@ -16,12 +19,16 @@ import './firebase/config'
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}></Route>
-        <Route path="/nosotros" element={<Nosotros />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <ContextGeneralProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}></Route>
+          <Route path="/nosotros" element={<Nosotros />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/admin" element={<Administrador />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </ContextGeneralProvider>
   </React.StrictMode>
 );
 

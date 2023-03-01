@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
+import { ContextGeneral } from "../../context/ContextGeneral";
 import "../../styles/publicaciones/SeccPublicaciones.css";
-import { getDocumentosBD } from "../../firebase/api";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -18,77 +18,15 @@ import { BsMegaphoneFill } from "react-icons/bs";
 import { FaMicrophoneAlt } from "react-icons/fa";
 import { SiGoogleclassroom } from "react-icons/si";
 
-const items = [
-  {
-    nombre: "convocatorias",
-    background: "rgba(255, 255, 255, 0.541)",
-    width: "365px",
-  },
-  {
-    nombre: "talleres",
-    background: "rgba(71, 31, 115, 0.541)",
-    width: "215px",
-  },
-  {
-    nombre: "podcast",
-    background: "rgba(146, 40, 110, 0.541)",
-    width: "225px",
-  },
-];
-
 function SeccPublicaciones() {
-  const [contentDescPizarron, setContentDescPizarron] = useState({});
-  const [convocatorias, setConvocatorias] = useState([]);
-  const [talleres, setTalleres] = useState([]);
-  const [podcast, setPodcast] = useState([]);
-
-  //Pasar al context:
-  const getLinks = async () => {
-    items.map(async (item) => {
-      const querySnapshot = await getDocumentosBD(item.nombre);
-      const docs = [];
-      querySnapshot.forEach((doc) => {
-        docs.push({ ...doc.data(), id: doc.id });
-      });
-      if (item.nombre === "convocatorias") {
-        setConvocatorias(docs);
-      }
-      if (item.nombre === "talleres") {
-        setTalleres(docs);
-      }
-      if (item.nombre === "podcast") {
-        setPodcast(docs);
-      }
-    });
-  };
-
-  //Pasar al context:
-  useEffect(() => {
-    setContentDescPizarron({
-      titulo: "Da clic a un cartel",
-      desc: "Lorem Prepárate para solicitar el registro de tu marca con nosotros. Recibe asesorías personalizadas y hasta el 80% de reembolso una vez registrada tu marca ante el IMPI",
-      link: "https://forms.gle/vJPC87RYujo1DKcf8",
-      img: "https://hrdjumasol.com/wp-content/uploads/2013/12/500x500.gif",
-      backColorDesc: "rgba(255, 255, 255, 0.541)",
-      categoria: "convocatoria",
-    });
-    getLinks();
-    /* handleSubmit(); */
-
-    return () => {};
-  }, []);
-
-  //Esta función sirve para pintar todo lo que irá adentro del pizarron
-  function functionSetContent(variable, color) {
-    setContentDescPizarron({
-      titulo: variable.titulo,
-      desc: variable.desc,
-      link: variable.link,
-      img: variable.img,
-      backColorDesc: color,
-      categoria: variable.categoria,
-    });
-  }
+  const {
+    items,
+    convocatorias,
+    talleres,
+    podcast,
+    contentDescPizarron,
+    functionSetContent,
+  } = useContext(ContextGeneral);
 
   function casillaDesplegable() {
     return (
@@ -131,7 +69,7 @@ function SeccPublicaciones() {
           </div>
           <div
             className="rounded-top-left row py-4 py-lg-5"
-            style={{backgroundColor: items[0].background}}
+            style={{ backgroundColor: items[0].background }}
           >
             <div className="col">
               <Swiper
@@ -165,7 +103,9 @@ function SeccPublicaciones() {
               </Swiper>
             </div>
           </div>
-          {contentDescPizarron.categoria === "Convocatoria" ? casillaDesplegable() : null}
+          {contentDescPizarron.categoria === "Convocatoria"
+            ? casillaDesplegable()
+            : null}
         </div>
 
         <div className="col-12 col-lg-4 mb-5 mb-lg-0">
@@ -210,7 +150,9 @@ function SeccPublicaciones() {
               </Swiper>
             </div>
           </div>
-          {contentDescPizarron.categoria === "Taller" ? casillaDesplegable() : null}
+          {contentDescPizarron.categoria === "Taller"
+            ? casillaDesplegable()
+            : null}
         </div>
 
         <div className="col-12 col-lg-4 mb-5 mb-lg-0">
@@ -255,36 +197,40 @@ function SeccPublicaciones() {
               </Swiper>
             </div>
           </div>
-          {contentDescPizarron.categoria === "Podcast" ? casillaDesplegable() : null}
+          {contentDescPizarron.categoria === "Podcast"
+            ? casillaDesplegable()
+            : null}
         </div>
       </div>
 
       <div className="d-none d-lg-block">
-        <div
-          className="rounded-bottom_1rem row m-4 m-lg-0 p-5 d-flex align-items-center"
-          style={{ backgroundColor: contentDescPizarron.backColorDesc }}
-          
-        >
-          <div className="col-6 text-white">
-            <p className="fs-1 mb-5 fw-bold">{contentDescPizarron.titulo}</p>
-            <p className="fs-3 mb-5">{contentDescPizarron.desc}</p>
-            <p className="fs-3">
-              {contentDescPizarron.categoria === "Podcast"
-                ? "Escúchalo aquí: "
-                : "Link registro: "}
-              <a className=" text-white" href={contentDescPizarron.link}>
-                {contentDescPizarron.link}
-              </a>
-            </p>
+        {console.log(contentDescPizarron.categoria)}
+        {contentDescPizarron.categoria === "" ? null: (
+          <div
+            className="rounded-bottom_1rem row m-4 m-lg-0 p-5 d-flex align-items-center"
+            style={{ backgroundColor: contentDescPizarron.backColorDesc }}
+          >
+            <div className="col-6 text-white">
+              <p className="fs-1 mb-5 fw-bold">{contentDescPizarron.titulo}</p>
+              <p className="fs-3 mb-5">{contentDescPizarron.desc}</p>
+              <p className="fs-3">
+                {contentDescPizarron.categoria === "Podcast"
+                  ? "Escúchalo aquí: "
+                  : "Link registro: "}
+                <a className=" text-white" href={contentDescPizarron.link}>
+                  {contentDescPizarron.link}
+                </a>
+              </p>
+            </div>
+            <div className="col-6 d-flex align-items-center justify-content-center">
+              <img
+                className="rounded-2rem img-fluid"
+                src={contentDescPizarron.img}
+                alt={contentDescPizarron.titulo}
+              />
+            </div>
           </div>
-          <div className="col-6 d-flex align-items-center justify-content-center">
-            <img
-              className="rounded-2rem img-fluid"
-              src={contentDescPizarron.img}
-              alt={contentDescPizarron.titulo}
-            />
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
