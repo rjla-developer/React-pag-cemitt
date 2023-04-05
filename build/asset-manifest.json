@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/pag-cemitt/build/static/css/main.a3aa06e7.css",
+    "main.js": "/pag-cemitt/build/static/js/main.0c092e7e.js",
+    "static/js/787.cd4f6ebd.chunk.js": "/pag-cemitt/build/static/js/787.cd4f6ebd.chunk.js",
+    "static/media/cemitt.png": "/pag-cemitt/build/static/media/cemitt.92cb1dd8b12cf6a283e8.png",
+    "static/media/imgPerfil.jpg": "/pag-cemitt/build/static/media/imgPerfil.c9add6731065917add31.jpg",
+    "index.html": "/pag-cemitt/build/index.html",
+    "main.a3aa06e7.css.map": "/pag-cemitt/build/static/css/main.a3aa06e7.css.map",
+    "main.0c092e7e.js.map": "/pag-cemitt/build/static/js/main.0c092e7e.js.map",
+    "787.cd4f6ebd.chunk.js.map": "/pag-cemitt/build/static/js/787.cd4f6ebd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a3aa06e7.css",
+    "static/js/main.0c092e7e.js"
+  ]
+}

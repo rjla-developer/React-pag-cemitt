@@ -2,16 +2,18 @@
     min-height: 100vh;
 }
 
-.barra-lateral a{
+.barra-lateral button{
     color: white;
     text-decoration: none;
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
 }
 
 .logo-admin:hover {
     background-color: #000000 !important;
 }
 
-.barra-lateral  a:hover {
+.barra-lateral  button:hover {
     color: #ffffff !important;
     text-decoration: none !important;
     background-color: #92286E
@@ -25,4 +27,8 @@
 .btnEditDelete{
     position: absolute;
     margin-left: 20rem;
+}
+
+.loadIcon{
+ font-size: 5rem;   
 }

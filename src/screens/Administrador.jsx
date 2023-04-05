@@ -1,7 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import "../styles/Administrador.css";
 
-import { saveDocumentoBD, deleteDocumentoBD, updateDocumentoBD } from "../firebase/api";
+import {
+  saveDocumentoBD,
+  deleteDocumentoBD,
+  updateDocumentoBD,
+} from "../firebase/api";
 
 //Context:
 import { ContextGeneral } from "../context/ContextGeneral";
@@ -12,6 +16,7 @@ import { FaMicrophoneAlt, FaEdit } from "react-icons/fa";
 import { SiGoogleclassroom } from "react-icons/si";
 import { MdOndemandVideo } from "react-icons/md";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import { BiLoaderCircle } from "react-icons/bi";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -19,26 +24,46 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cards";
-import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 // import required modules
-import { EffectCards, Pagination } from "swiper";
+import { EffectCards, Navigation } from "swiper";
 
 function Administrador() {
   const [edit, setEdit] = useState(false);
   const [agregar, setAgregar] = useState(false);
-  const { convocatorias, contentDescPizarron, functionSetContent } =
-    useContext(ContextGeneral);
-  const [valueState, setValueState] = useState(contentDescPizarron);
+  const {
+    convocatorias,
+    talleres,
+    podcast,
+    contentDescPizarron,
+    setContentDescPizarron,
+    functionSetContent,
+    initialStateContent,
+    getLinks
+  } = useContext(ContextGeneral);
+  const [cartelVariable, setCartelVariable] = useState("convocatorias");
+  const [load, setLoad] = useState(false);
 
-  const handleInputChange=(e)=>{
-    const {name, value}= e.target;
-    setValueState({...valueState, [name]: value});
-  }
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setContentDescPizarron({ ...contentDescPizarron, [name]: value });
+  };
+
+  useEffect(() => {
+    getLinks()
+  
+    return () => {
+    }
+  }, [load])
+  
 
   const formulario = (titulo) => {
     return (
-      <form className="row d-flex align-items-center justify-content-center mt-5">
+      <form
+        id="form"
+        className="row d-flex align-items-center justify-content-center mt-5"
+      >
         <div className="col-8 rounded-2rem">
           <p className="fs-2 text-center text-white">{titulo}:</p>
 
@@ -53,6 +78,7 @@ function Administrador() {
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-sm"
               onChange={handleInputChange}
+              value={contentDescPizarron.titulo}
             />
           </div>
 
@@ -63,6 +89,7 @@ function Administrador() {
               className="form-control"
               aria-label="With textarea"
               onChange={handleInputChange}
+              value={contentDescPizarron.desc}
             ></textarea>
           </div>
 
@@ -77,6 +104,7 @@ function Administrador() {
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-sm"
               onChange={handleInputChange}
+              value={contentDescPizarron.img}
             />
           </div>
 
@@ -91,6 +119,7 @@ function Administrador() {
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-sm"
               onChange={handleInputChange}
+              value={contentDescPizarron.link}
             />
           </div>
         </div>
@@ -100,11 +129,12 @@ function Administrador() {
             className="btn btn-primary me-3"
             onClick={() => {
               if (titulo === "Agregar") {
-                console.log("Se agrego")
-                saveDocumentoBD(valueState, "convocatorias")
+                saveDocumentoBD(contentDescPizarron, cartelVariable);
+                reset();
+                
               } else if (titulo === "Editar") {
-                console.log("Se edito")
-                updateDocumentoBD(valueState.id, valueState, "convocatorias")
+                updateDocumentoBD(contentDescPizarron.id, contentDescPizarron, cartelVariable);
+                reset();
               }
             }}
           >
@@ -116,8 +146,10 @@ function Administrador() {
             onClick={() => {
               if (titulo === "Agregar") {
                 setAgregar(false);
+                resetSlide()
               } else if (titulo === "Editar") {
                 setEdit(false);
+                resetSlide()
               }
             }}
           >
@@ -126,6 +158,196 @@ function Administrador() {
         </div>
       </form>
     );
+  };
+
+  const showSwiper = () => {
+    if (cartelVariable === "convocatorias")
+      return (
+        <div className="col">
+          <Swiper
+            effect={"cards"}
+            navigation={true}
+            modules={[EffectCards, Navigation]}
+            onSlideChange={() => {
+              resetSlide();
+            }}
+            className="mySwiper swiper-admin"
+          >
+            {convocatorias.map((cartel, index) => {
+              return (
+                <SwiperSlide className="shadow-lg" id="Swiper" key={cartel.id}>
+                  <>
+                    <div className="d-flex justify-content-center position-absolute">
+                      <button
+                        type="button"
+                        className="btn btn-light btn-lg mx-3"
+                        onClick={() => {
+                          setEdit(!edit);
+                          setAgregar(false);
+                          setContentDescPizarron(cartel);
+                          window.scroll(0, 50);
+                          console.log(contentDescPizarron);
+                        }}
+                      >
+                        <FaEdit />
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-danger btn-lg"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEliminar"
+                        onClick={() => {
+                          setContentDescPizarron(cartel);
+                        }}
+                      >
+                        <RiDeleteBin5Fill />
+                      </button>
+                    </div>
+
+                    <img
+                      className="img-fluid"
+                      src={cartel.img}
+                      alt={cartel.titulo}
+                    />
+                  </>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+      );
+    if (cartelVariable === "talleres")
+      return (
+        <div className="col">
+          <Swiper
+            effect={"cards"}
+            navigation={true}
+            modules={[EffectCards, Navigation]}
+            onSlideChange={() => {
+              resetSlide();
+            }}
+            className="mySwiper swiper-admin"
+          >
+            {talleres.map((cartel, index) => {
+              return (
+                <SwiperSlide className="shadow-lg" id="Swiper" key={cartel.id}>
+                  <>
+                    <div className="d-flex justify-content-center position-absolute">
+                      <button
+                        type="button"
+                        className="btn btn-light btn-lg mx-3"
+                        onClick={() => {
+                          setEdit(!edit);
+                          setAgregar(false);
+                          setContentDescPizarron(cartel);
+                          /* window.scroll(0, 50); */
+                        }}
+                      >
+                        <FaEdit />
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-danger btn-lg"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEliminar"
+                        onClick={() => {
+                          setContentDescPizarron(cartel);
+                        }}
+                      >
+                        <RiDeleteBin5Fill />
+                      </button>
+                    </div>
+
+                    <img
+                      className="img-fluid"
+                      src={cartel.img}
+                      alt={cartel.titulo}
+                    />
+                  </>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+      );
+
+    if (cartelVariable === "podcast")
+      return (
+        <div className="col">
+          <Swiper
+            effect={"cards"}
+            navigation={true}
+            modules={[EffectCards, Navigation]}
+            onSlideChange={() => {
+              resetSlide();
+            }}
+            className="mySwiper swiper-admin"
+          >
+            {podcast.map((cartel, index) => {
+              return (
+                <SwiperSlide className="shadow-lg" id="Swiper" key={cartel.id}>
+                  <>
+                    <div className="d-flex justify-content-center position-absolute">
+                      <button
+                        type="button"
+                        className="btn btn-light btn-lg mx-3"
+                        onClick={() => {
+                          setEdit(!edit);
+                          setAgregar(false);
+                          setContentDescPizarron(cartel);
+                          window.scroll(0, 50);
+                          console.log(contentDescPizarron);
+                        }}
+                      >
+                        <FaEdit />
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-danger btn-lg"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEliminar"
+                        onClick={() => {
+                          setContentDescPizarron(cartel);
+                        }}
+                      >
+                        <RiDeleteBin5Fill />
+                      </button>
+                    </div>
+
+                    <img
+                      className="img-fluid"
+                      src={cartel.img}
+                      alt={cartel.titulo}
+                    />
+                  </>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+      );
+  };
+
+  const reset = () => {
+    setLoad(true);
+    setEdit(false);
+    setAgregar(false);
+    functionSetContent({
+      id: "",
+      titulo: "",
+      desc: "",
+      link: "",
+      img: " ",
+      categoria: "",
+    });
+    setTimeout(() => {
+      setLoad(false);
+    }, 150);
+  };
+
+  const resetSlide = () => {
+    setEdit(false);
+    setContentDescPizarron(initialStateContent)
   };
 
   return (
@@ -142,109 +364,93 @@ function Administrador() {
                 />
               </div>
             </div>
-            <a
+            <button
               className="nav-link active ms-3 d-flex align-items-center justify-content-center"
-              href="/"
+              onClick={() => {
+                reset();
+                setCartelVariable("convocatorias");
+              }}
             >
               <BsMegaphoneFill className="me-2" />
               Convovatorias
-            </a>
-            <a
+            </button>
+            <button
               className="nav-link ms-3 d-flex align-items-center justify-content-center"
-              href="/"
-            >
-              <FaMicrophoneAlt className="me-2" />
-              Talleres
-            </a>
-            <a
-              className="nav-link ms-3 d-flex align-items-center justify-content-center"
-              href="/"
+              onClick={() => {
+                reset();
+                setCartelVariable("talleres");
+              }}
             >
               <SiGoogleclassroom className="me-2" />
-              Podcast
-            </a>
-            <a
+              Talleres
+            </button>
+            <button
               className="nav-link ms-3 d-flex align-items-center justify-content-center"
-              href="/"
+              onClick={() => {
+                reset();
+                setCartelVariable("podcast");
+              }}
+            >
+              <FaMicrophoneAlt className="me-2" />
+              Podcast
+            </button>
+            <button
+              className="nav-link disabled ms-3 d-flex align-items-center justify-content-center"
+              onClick={() => {
+                reset();
+                setCartelVariable("modulos");
+              }}
             >
               <MdOndemandVideo className="me-2" />
               Módulos
-            </a>
+            </button>
           </nav>
         </div>
 
         <div className="col p-5 mt-2">
-          <h1 className="text-center text-white">Convocatorias</h1>
+          <h1 className="text-center text-white text-capitalize">{cartelVariable}</h1>
           <div className="row mt-5 pt-5">
-            <div className="col">
-              <Swiper
-                effect={"cards"}
-                grabCursor={true}
-                pagination={{
-                  clickable: true,
-                }}
-                modules={[EffectCards, Pagination]}
-                className="mySwiper swiper-admin"
-              >
-                {convocatorias.map((convocatoria, index) => {
-                  return (
-                    <SwiperSlide
-                      className="shadow-lg"
-                      id="Swiper"
-                      key={"Convocatoria: " + index}
-                    >
-                      <>
-                        <div className="d-flex justify-content-center position-absolute">
-                          <button
-                            type="button"
-                            className="btn btn-light btn-lg mx-3"
-                            onClick={() => {
-                              setEdit(!edit);
-                              setAgregar(false);
-                              functionSetContent(convocatoria, "black");
-                              setValueState({...valueState, ["id"]: convocatoria.id})
-                            }}
-                          >
-                            <FaEdit />
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-danger btn-lg"
-                            onClick={()=>deleteDocumentoBD(convocatoria.id, "convocatorias")}
-                          >
-                            <RiDeleteBin5Fill />
-                          </button>
-                        </div>
-
-                        <img
-                          className="img-fluid"
-                          src={convocatoria.img}
-                          alt={convocatoria.titulo}
-                        />
-                      </>
-                    </SwiperSlide>
-                  );
-                })}
-              </Swiper>
-            </div>
-            <div className="col d-flex align-items-start justify-content-center bg-dark rounded-2rem">
-              <div className="text-white m-5">
-                <p className="fs-1 mb-5 fw-bold">
-                  {contentDescPizarron.titulo}
-                </p>
-                <p className="fs-3 mb-5">{contentDescPizarron.desc}</p>
-                <p className="fs-3">
-                  {contentDescPizarron.categoria === "Podcast"
-                    ? "Escúchalo aquí: "
-                    : "Link registro: "}
-                  <a className=" text-white" href={contentDescPizarron.link}>
-                    {contentDescPizarron.link}
-                  </a>
-                </p>
+            {load ? (
+              <div className="col d-flex justify-content-center rounded-2rem">
+                <div className="my-5 py-5">
+                  <BiLoaderCircle className="loadIcon my-5 text-white" />
+                </div>
               </div>
+            ) : (
+              showSwiper()
+            )}
+            <div className="col d-flex align-items-start justify-content-center bg-dark rounded-2rem">
+              {contentDescPizarron.categoria === "" ? (
+                <div className="text-white m-5">
+                  <p className="fs-1 text-center">
+                    Bienvenido al administrador
+                  </p>
+                  <p className="fs-5 text-center">
+                    Si deseas agregar un nuevo cartel, en la parte de abajo hay
+                    un botón que dice "Agregar nuevo elemento", dale clic y
+                    rellena el formulario, al finalizar dale clic en "Confirmar"
+                  </p>
+                </div>
+              ) : (
+                <div className="text-white m-5">
+                  <p className="fs-1 mb-5 fw-bold">
+                    {contentDescPizarron.titulo}
+                  </p>
+                  <p className="fs-3 mb-5">{contentDescPizarron.desc}</p>
+                  <p className="fs-3">
+                    {contentDescPizarron.categoria === "Podcast"
+                      ? "Escúchalo aquí: "
+                      : "Link registro: "}
+                    <a className=" text-white" href={contentDescPizarron.link}>
+                      {contentDescPizarron.link}
+                    </a>
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 
+          {/* Mostrar formulario para editar o mostrar botón */}
           {edit ? (
             formulario("Editar")
           ) : (
@@ -254,6 +460,8 @@ function Administrador() {
                   type="button"
                   className="btn btn-light btn-lg"
                   onClick={() => {
+                    resetSlide();
+                    setContentDescPizarron({...contentDescPizarron, ['categoria']: cartelVariable})
                     setAgregar(true);
                   }}
                 >
@@ -262,7 +470,101 @@ function Administrador() {
               </div>
             </div>
           )}
+
+          {/* Mostrar formulario de agregar */}
           {agregar ? formulario("Agregar") : null}
+
+          {/* Modal para eliminar */}
+          <div
+            className="modal fade"
+            id="modalEliminar"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabIndex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="staticBackdropLabel">
+                    Eliminar post
+                  </h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div className="modal-body">
+                  ¿Estas seguro que deseas eliminar este post?
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    data-bs-target="#ConfirmarElim"
+                    data-bs-toggle="modal"
+                    data-bs-dismiss="modal"
+                    onClick={() =>{
+                      deleteDocumentoBD(contentDescPizarron.id, cartelVariable);
+                      reset();
+                    }
+                    }
+                  >
+                    Continuar
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancelar
+                  </button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Modal para confirmar eliminación */}
+          <div
+            className="modal fade"
+            id="ConfirmarElim"
+            aria-hidden="true"
+            aria-labelledby="exampleModalToggleLabel2"
+            tabIndex="-1"
+          >
+            <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalToggleLabel2">
+                    Eliminado
+                  </h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div className="modal-body">
+                  Se ha borrado el elemento correctamente
+                </div>
+                <div className="modal-footer">
+                  <button
+                    className="btn btn-primary"
+                    data-bs-target="#exampleModalToggle"
+                    data-bs-toggle="modal"
+                    data-bs-dismiss="modal"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

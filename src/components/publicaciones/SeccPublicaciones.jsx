@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ContextGeneral } from "../../context/ContextGeneral";
 import "../../styles/publicaciones/SeccPublicaciones.css";
 
@@ -27,12 +27,13 @@ function SeccPublicaciones() {
     contentDescPizarron,
     functionSetContent,
   } = useContext(ContextGeneral);
+  const [backColorDesc, setBackColorDesc] = useState(items[0].background)
 
   function casillaDesplegable() {
     return (
       <div
         className="rounded-bottom_1rem row d-flex align-items-center d-block d-lg-none"
-        style={{ backgroundColor: contentDescPizarron.backColorDesc }}
+        style={{ backgroundColor: backColorDesc}}
       >
         <div className="col text-white">
           <p className="fs-4 mb-3 mt-3 fw-bold">{contentDescPizarron.titulo}</p>
@@ -89,7 +90,8 @@ function SeccPublicaciones() {
                       key={"Convocatoria: " + index}
                       onClick={() => {
                         /* window.scroll(0, 550); */
-                        functionSetContent(convocatoria, items[0].background);
+                        functionSetContent(convocatoria);
+                        setBackColorDesc(items[0].background);
                       }}
                     >
                       <img
@@ -103,7 +105,7 @@ function SeccPublicaciones() {
               </Swiper>
             </div>
           </div>
-          {contentDescPizarron.categoria === "Convocatoria"
+          {contentDescPizarron.categoria === "convocatorias"
             ? casillaDesplegable()
             : null}
         </div>
@@ -136,7 +138,8 @@ function SeccPublicaciones() {
                       key={"Taller: " + index}
                       onClick={() => {
                         /* window.scroll(0, 550); */
-                        functionSetContent(taller, items[1].background);
+                        functionSetContent(taller);
+                        setBackColorDesc(items[1].background);
                       }}
                     >
                       <img
@@ -150,7 +153,7 @@ function SeccPublicaciones() {
               </Swiper>
             </div>
           </div>
-          {contentDescPizarron.categoria === "Taller"
+          {contentDescPizarron.categoria === "talleres"
             ? casillaDesplegable()
             : null}
         </div>
@@ -182,8 +185,9 @@ function SeccPublicaciones() {
                       className="shadow-lg"
                       key={"Podcast: " + index}
                       onClick={() => {
-                        /* window.scroll(0, 550); */
-                        functionSetContent(podcast, items[2].background);
+                        /* window.scroll(0, 150); */
+                        functionSetContent(podcast);
+                        setBackColorDesc(items[2].background);
                       }}
                     >
                       <img
@@ -197,40 +201,47 @@ function SeccPublicaciones() {
               </Swiper>
             </div>
           </div>
-          {contentDescPizarron.categoria === "Podcast"
+          {contentDescPizarron.categoria === "podcast"
             ? casillaDesplegable()
             : null}
         </div>
       </div>
 
       <div className="d-none d-lg-block">
-        {console.log(contentDescPizarron.categoria)}
-        {contentDescPizarron.categoria === "" ? null: (
           <div
             className="rounded-bottom_1rem row m-4 m-lg-0 p-5 d-flex align-items-center"
-            style={{ backgroundColor: contentDescPizarron.backColorDesc }}
+            style={{ backgroundColor: backColorDesc }}
           >
-            <div className="col-6 text-white">
-              <p className="fs-1 mb-5 fw-bold">{contentDescPizarron.titulo}</p>
-              <p className="fs-3 mb-5">{contentDescPizarron.desc}</p>
-              <p className="fs-3">
-                {contentDescPizarron.categoria === "Podcast"
-                  ? "Escúchalo aquí: "
-                  : "Link registro: "}
-                <a className=" text-white" href={contentDescPizarron.link}>
-                  {contentDescPizarron.link}
-                </a>
-              </p>
-            </div>
-            <div className="col-6 d-flex align-items-center justify-content-center">
-              <img
-                className="rounded-2rem img-fluid"
-                src={contentDescPizarron.img}
-                alt={contentDescPizarron.titulo}
-              />
-            </div>
+            {contentDescPizarron.categoria === "" ? (
+              <div className="col text-white">
+                <p className="fs-1 text-center">Bienvenido al CemiTT</p>
+                <p className="fs-4 text-center">Dale clic a un post para continuar</p>
+              </div>
+            ): (
+              <>
+                <div className="col-6 text-white">
+                  <p className="fs-1 mb-5 fw-bold">{contentDescPizarron.titulo}</p>
+                  <p className="fs-3 mb-5">{contentDescPizarron.desc}</p>
+                  <p className="fs-3">
+                    {contentDescPizarron.categoria === "Podcast"
+                      ? "Escúchalo aquí: "
+                      : "Link registro: "}
+                    <a className=" text-white" href={contentDescPizarron.link}>
+                      {contentDescPizarron.link}
+                    </a>
+                  </p>
+                </div>
+                <div className="col-6 d-flex align-items-center justify-content-center">
+                  <img
+                    className="rounded-2rem img-fluid"
+                    src={contentDescPizarron.img}
+                    alt={contentDescPizarron.titulo}
+                  />
+                </div>
+              </>
+            )}
           </div>
-        )}
+        
       </div>
     </div>
   );

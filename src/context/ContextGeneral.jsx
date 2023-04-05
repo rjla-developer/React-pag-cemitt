@@ -5,19 +5,13 @@ export const ContextGeneral= createContext();
 
 export function ContextGeneralProvider(props) {
     const initialStateContent={
+        id:"",
         titulo: "",
         desc: "",
         link: "",
         img: " ",
-        backColorDesc: "",
         categoria: "",
     }
-
-    const [contentDescPizarron, setContentDescPizarron] = useState(initialStateContent);
-    /* const [backColorDesc, setBackColorDesc] = useState(items[0].) */
-    const [convocatorias, setConvocatorias] = useState([]);
-    const [talleres, setTalleres] = useState([]);
-    const [podcast, setPodcast] = useState([]);
 
     const items = [
         {
@@ -36,6 +30,11 @@ export function ContextGeneralProvider(props) {
           width: "225px",
         },
       ];
+
+    const [contentDescPizarron, setContentDescPizarron] = useState(initialStateContent);
+    const [convocatorias, setConvocatorias] = useState([]);
+    const [talleres, setTalleres] = useState([]);
+    const [podcast, setPodcast] = useState([]);
 
     const getLinks = async () => {
         items.map(async (item) => {
@@ -62,14 +61,14 @@ export function ContextGeneralProvider(props) {
     }, []);
 
     //Esta función sirve para pintar todo lo que irá adentro del pizarron
-    function functionSetContent(variable, color) {
+    function functionSetContent(variable) {
         setContentDescPizarron({
-        titulo: variable.titulo,
-        desc: variable.desc,
-        link: variable.link,
-        img: variable.img,
-        backColorDesc: color,
-        categoria: variable.categoria,
+            id: variable.id,
+            titulo: variable.titulo,
+            desc: variable.desc,
+            link: variable.link,
+            img: variable.img,
+            categoria: variable.categoria,
         });
     }
 
@@ -81,7 +80,9 @@ export function ContextGeneralProvider(props) {
             podcast: podcast,
             contentDescPizarron: contentDescPizarron,
             setContentDescPizarron: setContentDescPizarron,
-            functionSetContent: functionSetContent
+            functionSetContent: functionSetContent,
+            getLinks: getLinks,
+            initialStateContent: initialStateContent
         }}>
             {props.children}
         </ContextGeneral.Provider>
